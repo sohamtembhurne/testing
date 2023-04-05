@@ -4,6 +4,30 @@ const port = process.env.PORT || 3001;
 
 app.get("/", (req, res) => res.type('html').send(html));
 
+app.get('/webhook', function (req, res) {
+  // let mode = request.query["hub.mode"];
+  // let challenge = request.query["hub.challenge"];
+  // let token = request.query["hub.verify_token"];
+
+  const my_token = "theye";
+
+  console.log(req.query['hub.mode']);
+  console.log(req.query['hub.verify_token']);
+  if (
+    (req.query['hub.mode'] == 'subscribe') &&
+    (req.query['hub.verify_token'] == my_token)
+  ) {
+    res.send(req.query['hub.challenge']);
+  } else {
+    res.sendStatus(400);
+  }
+});
+
+app.post('/webhook', function (req, res) {
+  console.log(req.body);
+  // response.send(request.body);
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 
