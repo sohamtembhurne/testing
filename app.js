@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const bodyParser = require('body-parser');
 const port = process.env.PORT || 3001;
 
 app.get("/", (req, res) => res.type('html').send(html));
@@ -24,9 +25,26 @@ app.get('/webhook', function (req, res) {
 });
 
 app.post('/webhook', function (req, res) {
-  console.log(req.body);
-  // response.send(request.body);
-});
+  const body = JSON.parse(req.body)
+
+  if (body.field !== 'messages') {
+    // not from the messages webhook so dont process
+    return res.sendStatus(400)
+  }
+
+  const reviews = body.value.messages.map((message) => {
+
+    const reviewInfo = {
+      TableName: process.env.REVIEW_TABLE,
+      Item: {
+        phonenumber: message.from,
+        review: message.text.body
+      }
+    }
+  })
+}
+)
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
