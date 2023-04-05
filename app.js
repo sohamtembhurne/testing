@@ -11,8 +11,8 @@ app.get('/webhook', function (req, res) {
 
   const my_token = "theye";
 
-  console.log(req.query['hub.mode']);
-  console.log(req.query['hub.verify_token']);
+  // console.log(req.query['hub.mode']);
+  // console.log(req.query['hub.verify_token']);
   if (
     (req.query['hub.mode'] == 'subscribe') &&
     (req.query['hub.verify_token'] == my_token)
@@ -42,7 +42,7 @@ app.post('/webhook', function (req, res) {
     }
   })
 }
-)
+);
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
