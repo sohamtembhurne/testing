@@ -24,6 +24,7 @@ app.get('/webhook', function (req, res) {
 });
 
 app.post('/webhook', function (req, res) {
+  console.log(req.body);
   const body = JSON.parse(req.body)
 
   if (body.field !== 'messages') {
