@@ -5,13 +5,10 @@ let users = [
     stage: 0,
     medicine: "",
     totalNumberOfMeds: 0,
-  },
-  {
-    phone_number: "917021938092",
-    name: "",
-    stage: 0,
-    medicine: "",
-    totalNumberOfMeds: 0,
+    latitude: 0,
+    longitude: 0,
+    currLocation: "",
+    messageID: "",
   },
 ];
 
@@ -25,10 +22,14 @@ function addUser(user) {
   if (user.sender) {
     users.push({
       phone_number: user.sender,
-      name: "Raju",
+      name: user.name,
       stage: 0,
       medicine: "",
       totalNumberOfMeds: 0,
+      latitude: 0,
+      longitude: 0,
+      currLocation: "",
+      messageID: "",
     });
   }
 
@@ -37,7 +38,11 @@ function addUser(user) {
     name: user.name,
     stage: 0,
     medicine: "",
+    latitude: 0,
+    longitude: 0,
     totalNumberOfMeds: 0,
+    currLocation: "",
+    messageID: "",
   };
 }
 
@@ -58,7 +63,7 @@ async function getUser(userDetails) {
 }
 
 function changeDetails(userDetails, replyDetails) {
-  if (userDetails.sender === "") return null;
+  if (userDetails.sender == "" && userDetails.phone_number == "") return null;
   users?.map((user) => {
     if (checkUser(user, userDetails)) {
       if (user.stage < 3) {
@@ -69,11 +74,22 @@ function changeDetails(userDetails, replyDetails) {
             user.medicine = user.medicine + ", " + replyDetails.reply;
           }
         }
+
+        if (replyDetails?.type && replyDetails?.type === "location") {
+          user.latitude = replyDetails.Latitude;
+          user.longitude = replyDetails.Longitude;
+          user.currLocation = replyDetails.address;
+        }
+        if (replyDetails && replyDetails?.replyType && replyDetails?.replyType === "button-reply"
+          && replyDetails?.reply === "Confirm") {
+          user.messageID = replyDetails?.messageID;
+        }
         if (user.totalNumberOfMeds === 0) user.stage = user.stage + 1;
         else user.totalNumberOfMeds = user.totalNumberOfMeds - 1;
-        console.log(user);
+        // console.log(user);
         return user;
       } else {
+        console.log("User stage to 0")
         user.stage = 0;
         user.medicine = "";
         user.totalNumberOfMeds = 0;
