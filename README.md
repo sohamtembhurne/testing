@@ -18,7 +18,7 @@ Medicine delivery apps are popular but can be inconvenient due to limited availa
 | JSON | Used as database for medicine information and store locations.                        |
 
 ### Dataset: -
-/image of 1mg
+![1Mg](studyMaterial/Images/Ngrok_terminal_image.jpeg)
 
 This project employed web scraping techniques to create a JSON database from the Tata 1mg website, allowing us to obtain a comprehensive list of medicines. By utilizing this approach, we efficiently extracted the necessary data and organized it in a structured format. The resulting JSON database serves as a valuable resource for further functionalities such as searching and spelling correction within the scope of the project.
 
@@ -36,10 +36,11 @@ On the user end, the steps followed are as follows - 
 6. This address, along with the requested medicine, is then resent to the user to get confirmed
 7. After confirmation, the information is sent to nearest stores for acceptance
 
-/image of user end
+![User_End](studyMaterial/Images/User_Side.png)
 
 On the Medicine store end, he will receive following - 
-/image of store end
+
+![User_End](studyMaterial/Images/Store-Side.jpeg)
 
 ### Steps to setup locally
 ##### Setting up using Ngrok
@@ -64,13 +65,13 @@ To start server on port 8000 using Nodemon.
 
 **Step - 5**: Copy the tunnel link from the terminal interface  
 
-![Terminal](Images/ngrok-terminal.png)
+![Terminal](studyMaterial/Images/ngrok-terminal.png)
 
 **Step - 6**: Paste it on browser and visit it, then paste that same link with a ```/webhooks``` route and Verify Token as ```theye``` to configure webhook on the Meta Developer Page  
 Example link -  
 (https://developers.facebook.com/apps/{someid}/whatsapp-business/wa-settings/).  
   
-/image of webhook
+![Web Hook](studyMaterial/Images/CallBack_URL.png)
 
 **NOTE:** Also subscribe to the messages mentioned in the ‘Webhook Fields’ section just below ‘Callback URL’ after verifying the webhook callback URL.
 
