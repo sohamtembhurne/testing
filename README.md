@@ -18,7 +18,7 @@ Medicine delivery apps are popular but can be inconvenient due to limited availa
 | JSON | Used as database for medicine information and store locations.                        |
 
 ### Dataset: -
-![1Mg](studyMaterial/Images/Ngrok_terminal_image.jpeg)
+![1Mg](studyMaterial/Images/1mg.png)
 
 This project employed web scraping techniques to create a JSON database from the Tata 1mg website, allowing us to obtain a comprehensive list of medicines. By utilizing this approach, we efficiently extracted the necessary data and organized it in a structured format. The resulting JSON database serves as a valuable resource for further functionalities such as searching and spelling correction within the scope of the project.
 
