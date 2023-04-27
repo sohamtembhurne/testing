@@ -64,7 +64,8 @@ To start server on port 8000 using Nodemon.
 
 **Step - 5**: Copy the tunnel link from the terminal interface  
 
-/terminal image
+![Terminal](Images/ngrok-terminal.png)
+
 **Step - 6**: Paste it on browser and visit it, then paste that same link with a ```/webhooks``` route and Verify Token as ```theye``` to configure webhook on the Meta Developer Page  
 Example link -  
 (https://developers.facebook.com/apps/{someid}/whatsapp-business/wa-settings/).  
